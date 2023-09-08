@@ -13,37 +13,26 @@ int MinInt(int number1, int number2, int number3, int min)
 }
 
 //third
-int SumInt(ref int number1, ref int number2)
-{
-    int temp = number2;
-    int sum = 0;
 
+bool TrySumIfOdd(out int sum, int number1, int number2)
+{
+    int t = number1;
+    sum = 0;
     if (number1 == number2)
     {
-        sum = number2;
-    }
-    else if (number2 < number1)
-    {
-        temp = number1;
-        for (int i = number2; i <= temp; i++)
-        {
-            sum += i;
-        }
+        sum = number1;
     }
     else
     {
-        for(int i = number1; i <= temp; i++)
-        {
-            sum += i;
-        }
+        number1 = number2;
+        number2 = t;
     }
-    return sum;
-}
-bool TrySumIfOdd(ref int sum, bool isOdd)
-{
-    if(sum % 2 != 0)
-        isOdd = true;
-    return isOdd;
+    for (int i = number1; i <= number2; i++)
+    {
+        sum += i;
+    }
+
+    return sum % 2 == 0;
 }
 
 
@@ -51,8 +40,8 @@ Console.WriteLine("Enter first number:");
 int a = int.Parse(Console.ReadLine());
 Console.WriteLine("Enter second number:");
 int b = int.Parse(Console.ReadLine());
-bool sumIsOdd = false;
 
-int sum = SumInt(ref a, ref b);
 
-Console.WriteLine($"sum of numbers {a} and {b} is odd? {TrySumIfOdd(ref sum, sumIsOdd)}");
+
+
+Console.WriteLine($"sum of numbers {a} and {b} is odd? {TrySumIfOdd(out sum,a,b)}");
