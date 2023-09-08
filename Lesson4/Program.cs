@@ -32,7 +32,9 @@ bool TrySumIfOdd(out int sum, int number1, int number2)
         sum += i;
     }
 
-    return sum % 2 == 0;
+    if (sum % 2 == 0)
+        return false;
+    return true;
 }
 
 
@@ -41,7 +43,7 @@ int a = int.Parse(Console.ReadLine());
 Console.WriteLine("Enter second number:");
 int b = int.Parse(Console.ReadLine());
 
+int sumnull;
 
 
-
-Console.WriteLine($"sum of numbers {a} and {b} is odd? {TrySumIfOdd(out sum,a,b)}");
+Console.WriteLine($"sum of numbers {a} and {b} is odd? {TrySumIfOdd(out sumnull,a,b)}");
